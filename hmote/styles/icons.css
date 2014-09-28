@@ -1,0 +1,34 @@
+/* CSS Document */
+
+
+
+.hmote-menu-btn{
+	position: relative;
+	display: inline-table;
+	float: left;
+	height: 55px;
+	width: 55px;
+	box-shadow: 0 0 1px 0 black;
+	border-radius: 5px;
+	text-align:center;
+}
+
+.hmote-menu-btn:hover{box-shadow: 0 0 3px 0 black;}
+.hmote-menu-btn:active{box-shadow: 0 0 0 0 black;}
+
+.two-column-icon{background: url(../img/icons.jpg) -606px -206px;}
+.four-box-icon{background: url(../img/icons.jpg) -739px -139px;}
+.two-gears-icon{background: url(../img/icons.jpg) -73px -339px;}
+.bar-graph-icon{background: url(../img/icons.jpg) -6px -272px;}
+.man-outline-icon{background: url(../img/icons.jpg) -739px -72px;}
+.sale-tag-icon{background: url(../img/icons.jpg) -139px -72px;}
+.plus-tag-icon{background: url(../img/icons.jpg) -406px -72px;}
+.cart-icon{background: url(../img/icons.jpg) -6px -72px;}
+.exclamation-icon{background: url(../img/icons.jpg) -339px -272px;}
+.small-car-icon{background: url(../img/icons.jpg) -606px -406px;}
+.hourglass-icon{background: url(../img/icons.jpg) -206px -340px;}
+.heart-icon{background: url(../img/icons.jpg) -339px -340px;}
+.house-icon{background: url(../img/icons.jpg) -539px -6px;}
+.money-icon{background: url(../img/icons.jpg) -406px -272px;}
+.info-icon{background: url(../img/icons.jpg) -273px -272px;}
+.handset-icon{background: url(../img/icons.jpg) -273px -205px;}

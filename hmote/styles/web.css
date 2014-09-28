@@ -1,0 +1,204 @@
+/* CSS Document */
+/*HYPERIOWARE COLORS
+Dark blue: #17375E
+Light Blue: #558ED5
+Grey: #EBEBEB
+*/
+#wrapper{
+	height: 800px;
+	width: 960px;
+	margin: 0 auto;
+	padding: 0 0 0 0;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+#main-menu{
+	position:absolute;
+	top: 0;
+	height: 45px;
+	width: 960px;
+	background: black;
+}
+
+.hmote-btn{
+	padding: 5px;
+	background: #a9db80; /* Old browsers */
+	background: -moz-linear-gradient(top,  #a9db80 0%, #9ac178 0%, #639324 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9db80), color-stop(0%,#9ac178), color-stop(100%,#639324)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #a9db80 0%,#9ac178 0%,#639324 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #a9db80 0%,#9ac178 0%,#639324 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #a9db80 0%,#9ac178 0%,#639324 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #a9db80 0%,#9ac178 0%,#639324 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9db80', endColorstr='#639324',GradientType=0 ); /* IE6-9 */
+
+
+	color: white;
+	font-size: 10px;
+	text-decoration:none;
+	border-radius: 10px;
+}
+
+.hmote-btn:hover{
+	box-shadow: 0 0 1px 0 black;
+}
+
+.hmote-btn:active{
+	background: #a9db80;
+}
+
+.slide-btn{
+	width: 40px;
+	overflow: hidden;
+}
+
+.slide-btn-item{
+	position: relative;
+	float: left;
+	display: inline;
+}
+
+.menu{
+	list-style-type: none;
+	padding: 0 0 0 0;
+	margin: 0;
+	color: #CCC;
+	height: 45px;
+}
+
+.menu a{
+	text-decoration: none;
+	color: #CCC;
+}
+
+.menu li{
+	float: left;
+	position: relative;
+	display: inline;
+	line-height: 45px;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 45px;
+}
+
+.menu img{
+	padding-top: 5px;
+}
+#content{
+	position: absolute;
+	top: 50px;
+	height: 675px;
+	width: 960px;
+}
+
+#submenu{
+	position:absolute;
+	top: 725px;
+	height: 50px;
+	width: 960px;
+	background: #17375E;
+}
+
+#submenu ul{
+	width: 960px;
+}
+
+#submenu ul li{
+	width: 220px;
+	text-align: center;
+}
+#footer{
+	position:absolute;
+	top: 775px;
+	height: 25px;
+	width: 960px;
+}
+
+/******* LOGIN **********/
+.h1{
+	position: relative;
+	display: block;
+	float: left;
+	font-size: 24px;
+	color: #17375E;
+	width: 960px;
+	padding: 10px 0 10px 0;
+}
+.p{
+	position: relative;
+	display: block;
+	float: left;
+	width: 960px;
+	padding: 10px;
+}
+
+#login-form, #register-form{
+	position: relative;
+	display: block;
+	float: left;
+	width: 300px;
+	padding: 10px;
+	margin-left: 10%;
+}
+
+form label{
+	position:relative;
+	float:left;
+	width:80px;
+	text-align:right;
+	padding-right:10px;
+}
+
+form ul{
+	list-style-type: none;
+}
+
+form ul li{
+	position:relative;
+	display:block;
+	float: left;
+	width: 350px;
+}
+form .sub-note{
+	position: relative;
+	display: block;
+	float: left;
+	width: 300px;
+	padding: 10px;
+	font-size: 12px;
+}
+
+form input[type=submit]{
+	float: right;
+	margin-top: 10px;
+	margin-right: 75px;
+}
+
+#login-container, #register-container{
+	position:relative;
+	display:block;
+	float:left;
+	width: 940px;
+	height: 250px;
+}
+
+#login-container{
+	background:#17375E;
+	color: #ccc;
+	padding: 10px;
+}
+
+#login-container .h1{
+	color:#ccc;
+}
+
+#register-container{
+	padding: 10px;
+}
+
+.sub-note a{
+	color: #558ED5;
+}
+
+.sub-note a:hover{
+	color: blue;
+}
