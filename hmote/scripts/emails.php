@@ -1,12 +1,10 @@
 <?php
 require_once 'dbfunctions.php';
-session_start();
 if(isset($_GET['request'])){
 	$request = sanitizeString($_GET['request']);
-	if($request == 'password_reset'){
-			$email = $_SESSION['email'];
-			$token = $_SESSION['token'];
-			$to = $email;
+	if($request === 'password_reset'){
+		if(isset($_GET['email'])){
+			$to = sanitizeString($_GET['email']);
 			$subject = "Hmote Password Reset";
 			$message = "
 			<html>
@@ -19,7 +17,7 @@ if(isset($_GET['request'])){
 			width:100%;'>
 			<h2 style='padding:10px;'>Password Reset Request</h2>
 			<p style='padding:10px;'>A password reset was just requested for an account using this email address. Please click the link below or copy-and-paste it into the address bar of your web browser.</p>
-			<a style='padding:10px;' href='https://apps.hyperioware.com/hmote/index.php?page=reset&email=$to&token=$token'>https://apps.hyperioware.com/hmote/index.php?page=reset&email=$to&token=$token</a>
+			<a style='padding:10px;' href='https://apps.hyperioware.com/hmote/index.php?page=reset&email=&token='>https://apps.hyperioware.com/hmote/index.php?page=reset&email=&token=</a>
 			<br>
 			<p style='padding:10px;'>If you feel you have received this email in error, please disregard.</p>
 			<p style='padding:10px;'>Sincerely,</p>
@@ -33,8 +31,8 @@ if(isset($_GET['request'])){
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			mail($to,$subject,$message,$headers);
-			header("Location: ../index.php?page=reset&action=sent");
-		
+			header("Location: ./index.php?page=reset&action=sent");
+		}
 	}
 }
 ?> 

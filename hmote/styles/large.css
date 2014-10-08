@@ -1,0 +1,133 @@
+/* CSS Document */
+#wrapper{
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 960px;
+	height: 800px;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+#main-menu{
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 80px;
+	height: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0 0 0 0;
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(left,  #eeeeee 0%, #eeeeee 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#eeeeee), color-stop(100%,#eeeeee)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #eeeeee 0%,#eeeeee 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #eeeeee 0%,#eeeeee 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #eeeeee 0%,#eeeeee 100%); /* IE10+ */
+	background: linear-gradient(to right,  #eeeeee 0%,#eeeeee 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=1 ); /* IE6-9 */
+	z-index: 99;
+}
+
+#main-menu li{
+	position:relative;
+	float:left;
+	text-align: center;
+}
+#main-menu li a{
+	position:absolute;
+	left: 0;
+	width: 70px;
+	height: 25px;
+	padding: 10px 5px;
+	transition: width 500ms, background 500ms;
+	-o-transition: width 500ms, background 500ms;
+	-moz-transition: width 500ms, background 500ms;
+	-webkit-transition: width 500ms, background 500ms;
+}
+#main-menu li a:hover{
+	width: 90px;
+	background:#DADADA;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+#main-menu li a:active{
+	box-shadow: 0 0 3px 1px black inset;
+	background: #CCC;
+}
+#hmote-dash{
+	top:45px;
+}
+#hmote-settings{
+	top:90px;
+}
+#hmote-orgs{
+	top:135px;
+}
+#hmote-budget{
+	top:180px;
+}
+#hmote-apps{
+	top:225px;
+}
+#content{
+	position:absolute;
+	top: 0;
+	left: 80px;
+	width: 100%;
+	height: 100%;
+	z-index: 98;
+}
+#submenu{
+	position:absolute;
+	bottom: 0;
+	left:80px;
+	height:50px;
+	width:100%;
+	background: #666;
+	z-index: 99;
+}
+#submenu ul{
+	float: right;
+	list-style-type: none;
+	padding: 0 0 0 0;
+	margin: 0;
+}
+#submenu ul li{
+	display: inline;
+	position: relative;
+	float: left;
+	font-size: 12px;
+	line-height: 50px;
+	width: 75px;
+	height: 50px;
+	color: #A7A7A7;
+	text-align: center;
+}
+
+#dash-head{
+	position: relative;
+	float: left;
+	display: inline;
+	width: 100%;
+}
+#dash-head p{
+	font-size: 0.7em;
+}
+#user-sum{
+	position: relative;
+	float: left;
+	display: inline;
+	width: 50%;
+	padding: 10px;
+}
+#org-sum{
+	position: relative;
+	float: right;
+	display: inline;
+	width: 50%;
+}
+#dash-feed{
+	width:100%
+	float: left;
+	display: inline;
+	position:relative;
+}
