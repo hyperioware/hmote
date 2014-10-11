@@ -2,6 +2,7 @@
 require_once "dbfunctions.php";
 require_once "hmotefunctions.php";
 require_once "classes.php";
+
 $error = "";
 if(isset($_GET['error'])){
 	$error = sanitizeString($_GET['error']);
@@ -21,18 +22,18 @@ if(isset($_POST['request'])){
 		if(Member::user_valid($email,$password)){
 			$_SESSION['email'] = $email;
 			$_SESSION['password'] = $password;
-			header("Location: ./index.php");
+			header("Location: ../index.php");
 		}else{
-			header("Location ./index.php?page=login&error=login&return=$return");
+			header("Location: ../index.php?page=login&error=login&return=$return");
 		}
 	}else if($request === 'register' && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['gender']) && isset($_POST['birthday']) && isset($_POST['city']) && isset($_POST['state']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['return'])){
 		if(!Member::user_valid(sanitizeString($_POST['email']),$_POST['password'])){
-			Member::register_new_user(sanitizeString($_POST['first-name']),sanitizeString($_POST['last-name']),sanitizeString($_POST['gender']),sanitizeString($_POST['birthday']),sanitizeString($_POST['city']),sanitizeString($_POST['state']),sanitizeString($_POST['email']),$_POST['password']);
+			Member::register_new_user(sanitizeString($_POST['first-name']),sanitizeString($_POST['last-name']),sanitizeString($_POST['city']),sanitizeString($_POST['state']),sanitizeString($_POST['gender']),sanitizeString($_POST['birthday']),sanitizeString($_POST['email']),$_POST['password']);
 			$_SESSION['email'] = sanitizeString($_POST['email']);
 			$_SESSION['password'] = $_POST['password'];
-			header("Location: ./index.php");
+			header("Location: emails.php?request=register");
 		}else{
-			header("Location ./index.php?page=login&error=register&return=$return");
+			header("Location: ../index.php?page=login&error=register&return=$return");
 		}
 	}
 }
@@ -40,7 +41,7 @@ if(isset($_POST['request'])){
 	<div id='login-container'>
 	<span class='h1'>Login</span>
     <span class='p'>Please log in to continue.</span>
-<form id='login-form' action='login.php' method='post'>
+<form id='login-form' action='scripts/login.php' method='post'>
 	<label for='email'>Email</label><input type='email' name='email' placeholder='Email' required='required' /><br />
     <label for='password'>Password</label><input type='password' name='password' placeholder='Password' required='required' /><br />
     <input type='hidden' name='return' value='<?php echo $page;?>' />
@@ -53,7 +54,7 @@ if(isset($_POST['request'])){
 <div id='register-container'>
 <span class='h1'>Not yet a member?</span>
 <span class='p'>Registration is free and easy!</span>
-<form id='register-form' action='login.php' method='post'>
+<form id='register-form' action='scripts/login.php' method='post'>
 <ul>
 <li><label for='first-name'>First Name</label><input type='text' name='first-name' placeholder='First Name' required='required'  /></li>
 <li><label for='last-name'>Last Name</label><input type='text' name='last-name' placeholder='Last Name' require='required'  /></li>

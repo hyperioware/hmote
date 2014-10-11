@@ -5,11 +5,13 @@ require_once "classes.php";
 
 /**************POSTS**********************/
 if(isset($_POST['token']) && isset($_POST['email'])){
+	session_start();
 	$email = sanitizeString($_POST['email']);
+	$token = $_POST['token'];
 	if(Member::email_exists($email)){
-		$_SESSION['password_reset_token'] = $_POST['token'];
-		$_SESSION['password_reset_email'] = $email;
-		header("Location: emails.php?request=password_reset&email=$email");
+		$_SESSION['token'] = $_POST['token'];
+		$_SESSION['email'] = $email;
+		header("Location: emails.php?request=password_reset");
 	}else{
 		header("Location: ./index.php?page=reset&error=error");
 	}
@@ -17,26 +19,26 @@ if(isset($_POST['token']) && isset($_POST['email'])){
 	$email = sanitizeString($_POST['email']);
 	$password = $_POST['password'];
 	Member::reset_password($email,$password);
-	header("Location: ./index.php?page=login");
+	header("Location: ../index.php?page=login");
 }
 /*************GETS*********************/
-if(isset($_GET['token']) && isset($_GET['email']) && isset($_SESSION['password_reset_token']) && isset($_SESSION['password_reset_email'])){
+if(isset($_GET['token']) && isset($_GET['email']) && isset($_SESSION['token']) && isset($_SESSION['email'])){
 	$token = $_GET['token'];
 	$email = $_GET['email'];
-	if($token === $_SESSION['password_reset_token'] && $email === $_SESSION['password_reset_email']){
+	if($token === $_SESSION['token'] && $email === $_SESSION['email']){
 		unset($_SESSION['password_reset_token']);
 		unset($_SESSION['password_reset_email']);
 		echo "
 		<span class='h1'>Password Reset</span>
 		<span>Please enter a new password below.</span>
-		<form action='reset.php' method='post'>
+		<form action='scripts/reset.php' method='post'>
 			<input type='hidden' name='email' value='$email'>
 			<label for='password'>New password</label><input type='password' name='password' required='required' placeholder='Password'><input class='hmote-btn' type='submit' value='Reset'>
 		</form>
 		";
 	}
 }else if(isset($_GET['action'])){
-	if($__GET['action'] === 'sent'){
+	if($_GET['action'] === 'sent'){
 		echo "<span class='h1'>Password Reset</span><span>An email has been sent to the provided email address. Please click the included link to finish the reset process.</span>";
 	}
 }else{

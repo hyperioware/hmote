@@ -1,16 +1,6 @@
 <?php
 class HmoteItem{
-	public function editProperty($prop,$value){
-		$this->properties[$prop] = $value;
-	}
-		
-	public function getProperties(){
-		return $this->properties;
-	}
 	
-	public function getProperty($prop){
-		return $this->properties[$prop];
-	}
 }
 
 class Member extends HmoteItem{
@@ -31,9 +21,9 @@ class Member extends HmoteItem{
 		return md5($salt.$password);
 	}
 	
-	public static function register_new_user($first_name,$last_name,$gender,$birthday,$city,$state,$email,$password){
+	public static function register_new_user($first_name,$last_name,$city,$state,$gender,$birthday,$email,$password){
 		$passHash = Member::passHash($password);
-		$query = "INSERT INTO members (email,password,first_name,last_name,city,state,gender,birthday) VALUES ('$email','$passHash','$first_name','$last_name','$gender','$birthday','$city','$state')";
+		$query = "INSERT INTO members (email,password,first_name,last_name,city,state,gender,birthday) VALUES ('$email','$passHash','$first_name','$last_name','$city','$state','$gender','$birthday')";
 		$result = queryMysql($query);
 	}
 	public static function id_exists($id){
@@ -78,6 +68,16 @@ class Member extends HmoteItem{
 		if(mysql_num_rows($result)){
 			return true;
 		}else{return false;}
+	}
+	
+	public static function getProperty($email,$prop){
+		$result = queryMysql("SELECT $prop FROM members WHERE email='$email'");
+		if(mysql_num_rows($result)){
+			$row = mysql_fetch_row($result);
+			return $row[0];
+		}else{
+			return "";
+		}
 	}
 	
 }
