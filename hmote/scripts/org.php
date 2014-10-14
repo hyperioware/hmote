@@ -2,13 +2,15 @@
 require_once "dbfunctions.php";
 include "hmotefunctions.php";
 require_once "classes.php";
-function getPage($member,$page_id){
-	
+	$page_id = 0;
+	if(isset($_GET['page_id'])){
+		$page_id = sanitizeString($_GET['page_id']);
+	}
 	$id = 0;
 	$title = "";
 	$emp_title = "";
 	$emp_id = 0;
-	$mem_id = $member['id'];
+	$mem_id = Member::getProperty($_SESSION['email'],'id');
 	$result = queryMysql("SELECT org_id,title FROM org_members WHERE member_id='$mem_id'");
 	if(mysql_num_rows($result)){
 		$row = mysql_fetch_row($result);
@@ -60,12 +62,9 @@ function getPage($member,$page_id){
 		$leftPane = "Register new business";
 		$rightPane = "Registration content";
 	}
-return <<<END
+echo <<<END
 <div id='headline'><span id='biz-name'>$name</span>&nbsp;&nbsp;<span id='job-title'>$title</span></div>
 <div id='left-pane'>$leftPane</div>
 <div id='right-pane'>$rightPane</div>
 END;
-}
-
-
 ?>
