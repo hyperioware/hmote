@@ -59,7 +59,15 @@ require_once "classes.php";
 		$leftPane = "Profile Menu";
 		$rightPane = "Profile Content";
 	}else{
-		$leftPane = "Register new business";
+		$leftPane = "
+		<ul id='business-menu'>
+			<li class='active-menu-item'><a href='#' class='hmote-menu-btn house-icon' id='summary-btn'></a></li>
+			<li><a href='#' class='hmote-menu-btn location-marker-icon' id='settings-btn'></a></li>
+			<li><a href='#' class='hmote-menu-btn handset-icon' id='sales-btn'></a></li>
+			<li><a href='#' class='hmote-menu-btn money-icon' id='customers-btn' ></a></li>
+			<li><a href='#' class='hmote-menu-btn checkmark-icon' id='storefront-btn'></a></li>
+		</ul>";
+		
 		$rightPane = "Registration content";
 	}
 echo <<<END
