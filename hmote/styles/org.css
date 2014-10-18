@@ -340,3 +340,30 @@
 	float:left;
 	margin-left: 315px;
 }
+
+/*******ORG REGISTRATION***********/
+.register-pane{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 860px;
+	height: 625px;
+	background: #558ED5;
+	color: #f7f7f7;
+	padding: 10px;
+}
+
+.pane-description{
+	position:relative;
+	float:left;
+	display:block;
+	width:860px;
+	padding-top: 100px;
+	color:#E9E9E9;
+}
+
+#preview-map{
+	width: 300px;
+	height: 300px;
+}

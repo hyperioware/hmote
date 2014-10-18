@@ -403,7 +403,7 @@ function getStoreFront($id){
 
 function getStateHTML(){
 	$html = "
-		<option value='AZ'>AZ</option>
+		<option value='AZ' selected='selected'>AZ</option>
 		<option value='AR'>AR</option>
 		<option value='AK'>AK</option>
 		<option value='AL'>AL</option>

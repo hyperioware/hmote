@@ -176,6 +176,14 @@ if(isset($_POST['request'])){
 				case "storefront": echo json_encode(array("status" => "success", "content" => getStoreFront($id)));break;
 			}
 		}
+	}else if($request === "verify_business_name"){
+		$name = sanitizeString($_POST['name']);
+		$result = queryMysql("SELECT id FROM businesses WHERE name='$name'");
+		if(mysql_num_rows($result)){
+			echo json_encode(array("status" => "error","message"=>"Name already exists."));
+		}else{
+			echo json_encode(array("status" => "success"));
+		}
 	}else{echo json_encode(array("status" => "error", "type" => "Request '$request' not recognized"));}
 }else{echo json_encode(array("status" => "error", "type" => "No request sent"));}
 ?>

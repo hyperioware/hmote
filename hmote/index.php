@@ -3,7 +3,6 @@ require_once "scripts/dbfunctions.php";
 require_once "scripts/classes.php";
 $loggedin = false;
 $member = "";
-$business = "";
 $page = "home";
 session_start();
 $content = "";
@@ -57,53 +56,13 @@ if(isset($_SESSION['email']) && isset($_SESSION['password'])){
 <link rel="stylesheet" type="text/css" href="js/ui/css/smoothness/jquery-ui-1.10.3.custom.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBFzH65DkDVMJ2U89gqwxDWvI7O8jpS-r8'></script>
 <script src="js/ui/js/jquery-ui-1.10.3.custom.min.js"></script>
 <script src="//connect.facebook.net/en_US/sdk.js"></script>
 <script src="js/hmote.js"></script>
 <script src="js/<?php echo $page;?>.js"></script>
 <script>
 $(document).ready(function(){
-	FB.init({
-	  appId: 770345716349771,
-	  frictionlessRequests: true,
-	  status: true,
-	  version: 'v2.0'
-	});
-});
-function login(callback) {
-  FB.login(callback);
-}
-function loginCallback(response) {
-  console.log('loginCallback',response);
-  if(response.status != 'connected') {
-    top.location.href = 'https://www.facebook.com/appcenter/hmoteapp';
-  }else if(response.status == 'connected'){
-  	processUser();
-  }
-}
-function onStatusChange(response) {
-  if( response.status != 'connected' ) {
-    login(loginCallback);
-  } else {
-    processUser();
-  }
-}
-function onAuthResponseChange(response) {
-  console.log('onAuthResponseChange', response);
-}
-
-function processUser(){
-	FB.api('/me',function(response){
-		$.ajax({
-			type: 'POST',
-			url: 'scripts/fb_login.php',
-			data: {fb_id:response.id,page:"<?php echo $page;?>",page_id:"<?php echo $page_id;?>",first_name:response.first_name,last_name:response.last_name,gender:response.gender},
-			dataType: 'json',
-			success: function(data){
-				
-			}
-		});
-	});
 }
 </script>
 <style>
