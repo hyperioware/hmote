@@ -1,13 +1,13 @@
 // JavaScript Document
 $(document).ready(function(){
-	$("#start-pane.register-pane").show();
+	$("#start-pane.register-pane").css("top","0");
 	$(".biz-register").click(function(){
 		$("#business-menu li").removeClass('active-menu-item');
 		$(this).parent().addClass('active-menu-item');
 		var id = $(this).attr('id');
 		var temp = id.slice(0,-4);
-		$(".register-pane").hide();
-		$('#'+temp+"-pane").show();
+		$(".register-pane").css("top","630px");
+		$('#'+temp+"-pane").css("top","0");
 	});
 	
 	$("input[name=register-business-name]").keyup(function(){
@@ -51,7 +51,7 @@ function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
     var mapOptions = {
-      zoom: 10,
+      zoom: 8,
       center: latlng
     }
     map = new google.maps.Map(document.getElementById('preview-map'), mapOptions);

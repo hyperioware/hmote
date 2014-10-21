@@ -10,6 +10,7 @@
 	background: #558ED5;
 	color: #f7f7f7;
 	padding: 10px;
+	overflow:hidden;
 }
 #left-pane{
 	position: absolute;
@@ -344,9 +345,8 @@
 /*******ORG REGISTRATION***********/
 .register-pane{
 	position: absolute;
-	top: 0;
+	top: 630px;
 	left: 0;
-	display: none;
 	width: 860px;
 	height: 625px;
 	background: #558ED5;
@@ -364,6 +364,23 @@
 }
 
 #preview-map{
-	width: 800px;
+	margin-top: 10px;
+	width: 860px;
 	height: 500px;
+}
+
+#contact-pane label{
+	position: relative;
+	display:inline-table;
+	float:left;
+	width: 300px;
+	font-size: 24px;
+}
+
+#contact-pane input{
+	position: relative;
+	display:inline-table;
+	float:left;
+	width: 550px;
+	font-size: 24px;
 }

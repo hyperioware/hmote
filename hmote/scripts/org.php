@@ -78,7 +78,7 @@ require_once "classes.php";
 			<span class='pane-description'>This is the first step in your journey to get started! Picking a name is one of the most important parts of starting a business. If you can't think of a good name for your vision, you might as well stop here! It is important to keep in mind that your business's name should be unique in your market; you want that thing to pop when your potential customers see it!</span>
 		</div><!--end start-pane-->
 		<div class='register-pane' id='location-pane'>	
-			<span class='h1'>Location</span>
+			<span class='h1' style='color:#f7f7f7;font-size:32px;'>Location</span>
 			<div id='address-entries'>
 				<label for='street'>Street</label>
 				<input class='address-input' name='street' type='text' required='required' />
@@ -92,7 +92,15 @@ require_once "classes.php";
 			</div><!--end address-entries-->
 			<div id='preview-map' onload='initialize();'></div>
 		</div><!--end location-pane-->
-		<div class='register-pane' id='contact-pane'>Contact</div><!--end contact-pane-->
+		<div class='register-pane' id='contact-pane'>
+			<span class='h1' style='color:#f7f7f7;padding-bottom:50px;font-size:32px;'>Contact</span>
+			<label for='mobile-phone'>Mobile Phone</label><input type='phone' name='mobile-phone' />
+			<label for='land-phone'>Land Phone</label><input type='phone' name='land-phone' />
+			<label for='fax'>Fax</label><input type='phone' name='fax' />
+			<label for='facebook'>Facebook URL</label><input type='url' name='facebook' placeholder='Ex: https://www.facebook.com/hyperioware'/>
+			<label for='twitter'>Twitter URL</label><input type='url' name='twitter'  placeholder='Ex: https://www.twitter.com/hyperioware'/>
+			<label for='website'>Website</label><input type='url' name='website'  placeholder='Ex: http://www.yourbiz.com'/>
+		</div><!--end contact-pane-->
 		<div class='register-pane' id='payment-pane'>Payment</div><!--end payment-pane-->
 		<div class='register-pane' id='confirm-pane'>Confirm</div><!--end confirm-pane-->
 		</form>
