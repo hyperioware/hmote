@@ -87,7 +87,7 @@ require_once "classes.php";
 				<label for='state'>State</label>
 				<select class='address-input'  name='state' id='state'>$stateList</select>
 				<label for='zipcode'>Zipcode</label>
-				<input class='address-input' name='zipcode' type='text' maxlength='5' required='required' />
+				<input class='address-input' name='zipcode' type='text' maxlength='5' size='5' required='required' />
 				<a href='#' class='hmote-btn' id='confirm-address'>Confirm</a>
 			</div><!--end address-entries-->
 			<div id='preview-map' onload='initialize();'></div>
@@ -101,7 +101,11 @@ require_once "classes.php";
 			<label for='twitter'>Twitter URL</label><input type='url' name='twitter'  placeholder='Ex: https://www.twitter.com/hyperioware'/>
 			<label for='website'>Website</label><input type='url' name='website'  placeholder='Ex: http://www.yourbiz.com'/>
 		</div><!--end contact-pane-->
-		<div class='register-pane' id='payment-pane'>Payment</div><!--end payment-pane-->
+		<div class='register-pane' id='payment-pane'>
+			<span class='h1' style='color:#f7f7f7;padding-bottom:50px;font-size:32px;width:600px;'>Payment Info</span><!-- PayPal Logo --><table style='position:relative;float:right;' border='0' cellpadding='10' cellspacing='0' align='center'><tr><td align='center'></td></tr><tr><td align='center'><a href='https://www.paypal.com/webapps/mpp/paypal-popup' title='How PayPal Works' onclick='javascript:window.open(\'https://www.paypal.com/webapps/mpp/paypal-popup\',\'WIPaypal\',\'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700\'); return false;'><img src='https://www.paypalobjects.com/webstatic/mktg/logo/bdg_payments_by_pp_2line.png' border='0' alt='Payments by PayPal'></a><div style='text-align:center'><a href='https://www.paypal.com/webapps/mpp/how-paypal-works'><font size='2' face='Arial' color='#0079CD'>How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
+			<br><br><br><br><br><p>Enter your email address. This will be the email that you receive Hmote notifications at as well as Paypal activity.</p>
+			<label for='email'>Email</label><input type='email' name='email' required='required'/>
+		</div><!--end payment-pane-->
 		<div class='register-pane' id='confirm-pane'>Confirm</div><!--end confirm-pane-->
 		</form>
 		";
