@@ -184,6 +184,23 @@ if(isset($_POST['request'])){
 		}else{
 			echo json_encode(array("status" => "success"));
 		}
+	}else if($request === "register_business"){
+		$name = sanitizeString($_POST['name']);
+		$street = sanitizeString($_POST['city']);
+		$city = sanitizeString($_POST['city']);
+		$state = sanitizeString($_POST['state']);
+		$zipcode = sanitizeString($_POST['zipcode']);
+		$mobilePhone = sanitizeString($_POST['mobile-phone']);
+		$landPhone = sanitizeString($_POST['land-phone']);
+		$fax = sanitizeString($_POST['fax']);
+		$facebook = sanitizeString($_POST['facebook']);
+		$twitter = sanitizeString($_POST['twitter']);
+		$website = sanitizeString($_POST['website']);
+		$email = sanitizeString($_POST['email']);
+		$member_id = Member::getProperty($_SESSION['email'],'id');
+		$id = Business::generate_id();
+		$result = queryMysql("INSERT INTO businesses (id,memberID,name,email,street,city,state,zipcode,mobilePhone,landPhone,fax,facebook,twitter,website) VALUES('$id','$member_id','$name','$email','$street','$city','$state','$zipcode','$mobilePhone','$landPhone','$fax','$facebook','$twitter','$website')");
+		header("Location: emails.php?request=new_biz");
 	}else{echo json_encode(array("status" => "error", "type" => "Request '$request' not recognized"));}
 }else{echo json_encode(array("status" => "error", "type" => "No request sent"));}
 ?>

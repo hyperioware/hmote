@@ -369,7 +369,7 @@
 	height: 500px;
 }
 
-#contact-pane label{
+#contact-pane label, #payment-pane label{
 	position: relative;
 	display:inline-table;
 	float:left;
@@ -377,10 +377,15 @@
 	font-size: 24px;
 }
 
-#contact-pane input{
+#contact-pane input, #payment-pane input{
 	position: relative;
 	display:inline-table;
 	float:left;
 	width: 550px;
 	font-size: 24px;
+}
+
+#confirm-info-list{
+	list-style-type:none;
+	margin-left:300px;
 }

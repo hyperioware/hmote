@@ -35,6 +35,36 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#confirm-btn").click(function(){
+		var name = $("input[name=register-business-name]").val().trim();
+		var street = $("input[name=street]").val().trim();
+		var city = $("input[name=city]").val().trim();
+		var state = $("#state").val();
+		var zipcode = $("input[name=zipcode]").val().trim();
+		var mobile_phone = $("input[name=mobile-phone]").val().trim();
+		var land_phone = $("input[name=land-phone]").val().trim();
+		var fax = $("input[name=fax]").val().trim();
+		var facebook = $("input[name=facebook]").val().trim();
+		var twitter = $("input[name=twitter]").val().trim();
+		var website = $("input[name=website]").val().trim();
+		var email = $("input[name=email]").val().trim();
+		
+		var html = ""+
+		"<li>"+name+"</li>"+
+		"<li>"+street+"</li>"+
+		"<li>"+city+", "+state+" "+zipcode+"</li>"+
+		"<li>Mobile: "+mobile_phone+"</li>"+
+		"<li>Land: "+land_phone+"</li>"+
+		"<li>Fax: "+fax+"</li>"+
+		"<li>Facebook: "+facebook+"</li>"+
+		"<li>Twitter: "+twitter+"</li>"+
+		"<li>Website: "+website+"</li>"+
+		"<li>Email: "+email+"</li>";
+		
+		$("#confirm-info-list").html(html);
+		
+	});
+	
 	$("#confirm-address").click(function(){
 		var emptyInputs = $(this).parent().find('.address-input').filter(function() { return $(this).val() == ""; });
 		if (emptyInputs.length) {

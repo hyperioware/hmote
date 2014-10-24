@@ -102,11 +102,19 @@ require_once "classes.php";
 			<label for='website'>Website</label><input type='url' name='website'  placeholder='Ex: http://www.yourbiz.com'/>
 		</div><!--end contact-pane-->
 		<div class='register-pane' id='payment-pane'>
-			<span class='h1' style='color:#f7f7f7;padding-bottom:50px;font-size:32px;width:600px;'>Payment Info</span><!-- PayPal Logo --><table style='position:relative;float:right;' border='0' cellpadding='10' cellspacing='0' align='center'><tr><td align='center'></td></tr><tr><td align='center'><a href='https://www.paypal.com/webapps/mpp/paypal-popup' title='How PayPal Works' onclick='javascript:window.open(\'https://www.paypal.com/webapps/mpp/paypal-popup\',\'WIPaypal\',\'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700\'); return false;'><img src='https://www.paypalobjects.com/webstatic/mktg/logo/bdg_payments_by_pp_2line.png' border='0' alt='Payments by PayPal'></a><div style='text-align:center'><a href='https://www.paypal.com/webapps/mpp/how-paypal-works'><font size='2' face='Arial' color='#0079CD'>How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
-			<br><br><br><br><br><p>Enter your email address. This will be the email that you receive Hmote notifications at as well as Paypal activity.</p>
-			<label for='email'>Email</label><input type='email' name='email' required='required'/>
+			<span class='h1' style='color:#f7f7f7;padding-bottom:50px;font-size:32px;width:860px;'>Payment Info</span>
+			<span style='display:inline;position:relative;float:left;width:860px;font-size:22px;padding-bottom:50px;'>Enter your email address. This will be the email that you receive Hmote notifications at as well as Paypal activity.</span>
+			<label for='email' style='position:relative;display:inline;float:left;text-align:right;padding-right: 10px;font-size:22px;width:300px'>Email</label><input type='email' name='email' required='required' style='display:inline;position:relative;float:left;font-size:22px;width:300px;'/>
 		</div><!--end payment-pane-->
-		<div class='register-pane' id='confirm-pane'>Confirm</div><!--end confirm-pane-->
+		<div class='register-pane' id='confirm-pane'>
+			<span class='h1' style='color:#f7f7f7;padding-bottom:50px;font-size:32px;width:860px;'>Confirm</span>
+			<span class='pane-description' style='padding-top:0;padding-bottom:50px;'>Please look over the information below. If anything is incorrect, go back and change it before continuing.</span>
+			<ul id='confirm-info-list'>
+				
+			</ul>
+			<input type='hidden' name='request' value='register_business' />
+			<input type='submit' class='hmote-btn' value='Register'/>
+		</div><!--end confirm-pane-->
 		</form>
 		";
 	}

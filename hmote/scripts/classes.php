@@ -103,6 +103,28 @@ class Business extends HmoteItem{
 		}
 	}
 	
+	public static function generate_id(){
+		$found = true;
+		while($found){
+			$t = time();
+			$id = strtoupper(substr(md5($t),0,10));
+			if(!Business::id_exists($id)){
+				$found = false;
+			}
+		}
+		return $id;
+	}
+	
+	public static function getProperty($id,$prop){
+		$result = queryMysql("SELECT $prop FROM businesses WHERE memberID='$id'");
+		if(mysql_num_rows($result)){
+			$row = mysql_fetch_row($result);
+			return $row[0];
+		}else{
+			return "";
+		}
+	}
+	
 }
 
 class Order extends HmoteItem{

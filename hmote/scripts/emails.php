@@ -1,5 +1,6 @@
 <?php
 require_once 'dbfunctions.php';
+require_once 'classes.php';
 session_start();
 if(isset($_GET['request'])){
 	$request = sanitizeString($_GET['request']);
@@ -64,6 +65,37 @@ if(isset($_GET['request'])){
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 		mail($to,$subject,$message,$headers);
 		header("Location: ../index.php");
+	}else if($request == 'new_biz'){
+		$memid = Member::getProperty($_SESSION['email'],'id');
+		$email = Business::getProperty($memid,'email');
+		$to = $email;
+		$subject = "Welcome to Hmote!";
+		$message = "
+		<html>
+		<body>
+		<a href='https://www.hyperioware.com' style='border:none;'><img src='http://www.hyperioware.com/img/logo.png' width='400'/></a>
+		<div style='
+		border-top:3px solid black;
+		background:#F0F0F0;
+		font-family:Verdana,Tahoma,sans-serif;
+		width:100%;'>
+		<h2 style='padding:10px;'>Welcome!</h2>
+		<p style='padding:10px;'>Congratulations on your new opening! Already, your organization is searchable by the entire Hmote community, which means greater chances for new leads! Hurry up and log into your organization's dashboard and begin adding products and staff members and begin reaching out to your community in new and exciting ways!</p>
+		<a style='padding:10px;' href='https://apps.hyperioware.com/hmote/index.php?page=org'>Go Home!</a>
+		<br>
+		<p style='padding:10px;'>If you feel you have received this email in error, please disregard.</p>
+		<p style='padding:10px;'>Sincerely,</p>
+		<p style='padding:10px;'>Mike</p>
+		</div>
+		</body>
+		</html>
+		";
+		$from = "Hyperioware <mrudd@hyperioware.com>"."\r\n";
+		$headers = "From:" . $from;
+		$headers .= "MIME-Version: 1.0\r\n";
+		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+		mail($to,$subject,$message,$headers);
+		header("Location: ../index.php?page=org");
 	}
 	
 }
