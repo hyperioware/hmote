@@ -2,14 +2,15 @@
 require_once "dbfunctions.php";
 include "hmotefunctions.php";
 require_once "classes.php";
-	$page_id = 0;
+	$page_id = "";
 	if(isset($_GET['page_id'])){
 		$page_id = sanitizeString($_GET['page_id']);
 	}
-	$id = 0;
+	$id = "";
 	$title = "";
 	$emp_title = "";
 	$emp_id = 0;
+	$name = "";
 	$mem_id = Member::getProperty($_SESSION['email'],'id');
 	$result = queryMysql("SELECT org_id,title FROM org_members WHERE member_id='$mem_id'");
 	if(mysql_num_rows($result)){
@@ -18,31 +19,32 @@ require_once "classes.php";
 		$emp_title = "&#8226; ".$row[1];
 	}
 	$memberOf = false;
-	if($page_id != 0){//business id is set -- trying to view a business's page
-		$id = $page_id;
-		if($member['business_id'] != 0){//Member has a business
-			if($member['business_id'] == $page_id){//Member is viewing their own business page
+	$id = $page_id;
+	$biz_id = Member::getProperty($_SESSION['email'],'business_id');
+	if($page_id != ""){//business id is set -- trying to view a business's page
+		
+		if($biz_id != ""){//Member has a business
+			if($biz_id == $page_id){//Member is viewing their own business page
 				$memberOf = true;
 				$title = "&#8226; Owner";
 			}
 		}else{//Member does not have a business
-			if($emp_id != 0 && $emp_id == $id){//Member is an employee of the business that owns the page
+			if($emp_id != "" && $emp_id == $id){//Member is an employee of the business that owns the page
 				$title = $emp_title;
 				$memberOf = true;
 			}
 		}
-	}else if($member['business_id'] != 0){//business id not set in GET but is set in member details
-		$id = $member['business_id'];
+	}else if($biz_id != ""){//business id not set in GET but is set in member details
+		$id = $biz_id;
 		$title = "&#8226; Owner";	
 		$memberOf = true;
-	}else if($emp_id != 0){//business id not set in GET and not set in member details. check to see if member is employee
+	}else if($emp_id != ""){//business id not set in GET and not set in member details. check to see if member is employee
 		$id = $emp_id;
 		$title = $emp_title;
 		$memberOf = true;
 	}
-	if($id != 0 && $memberOf == true){
-		$business = Business::get_properties_by_id($id);
-		$name = $business['properties']['name'];
+	if($id != "" && $memberOf == true){
+		$name = Business::getProperty($id,'name');
 		$leftPane = "<input type='hidden' value='$id' id='biz_id'/><input type='hidden' value='member' id='status'/><ul id='business-menu'>
 			<li class='active-menu-item'><a href='#' class='hmote-menu-btn four-box-icon' id='summary-btn' onclick='getOrgContent(this);'></a></li>
 			<li><a href='#' class='hmote-menu-btn two-gears-icon' id='settings-btn' onclick='getOrgContent(this);'></a></li>
@@ -55,7 +57,7 @@ require_once "classes.php";
 		$rating = getRating($id);
 		$sales = get30DaysSales($id);
 		$rightPane = getDash($topProduct,$rating,$sales,$topCustomer);
-	}else if($id != 0 && $memberOf == false){
+	}else if($id != "" && $memberOf == false){
 		$leftPane = "Profile Menu";
 		$rightPane = "Profile Content";
 	}else{

@@ -116,7 +116,7 @@ class Business extends HmoteItem{
 	}
 	
 	public static function getProperty($id,$prop){
-		$result = queryMysql("SELECT $prop FROM businesses WHERE memberID='$id'");
+		$result = queryMysql("SELECT $prop FROM businesses WHERE id='$id'");
 		if(mysql_num_rows($result)){
 			$row = mysql_fetch_row($result);
 			return $row[0];

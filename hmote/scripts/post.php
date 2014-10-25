@@ -185,8 +185,8 @@ if(isset($_POST['request'])){
 			echo json_encode(array("status" => "success"));
 		}
 	}else if($request === "register_business"){
-		$name = sanitizeString($_POST['name']);
-		$street = sanitizeString($_POST['city']);
+		$name = sanitizeString($_POST['register-business-name']);
+		$street = sanitizeString($_POST['street']);
 		$city = sanitizeString($_POST['city']);
 		$state = sanitizeString($_POST['state']);
 		$zipcode = sanitizeString($_POST['zipcode']);
@@ -200,6 +200,7 @@ if(isset($_POST['request'])){
 		$member_id = Member::getProperty($_SESSION['email'],'id');
 		$id = Business::generate_id();
 		$result = queryMysql("INSERT INTO businesses (id,memberID,name,email,street,city,state,zipcode,mobilePhone,landPhone,fax,facebook,twitter,website) VALUES('$id','$member_id','$name','$email','$street','$city','$state','$zipcode','$mobilePhone','$landPhone','$fax','$facebook','$twitter','$website')");
+		$result = queryMysql("UPDATE members SET business_id='$id' WHERE id='$member_id'");
 		header("Location: emails.php?request=new_biz");
 	}else{echo json_encode(array("status" => "error", "type" => "Request '$request' not recognized"));}
 }else{echo json_encode(array("status" => "error", "type" => "No request sent"));}
